@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "cy:open": "cypress open",
     "build": "npx tsc",
     "start": "node build/index.js",
     "dev": "tsc-watch --onSuccess \"node ./build/index.js\""
