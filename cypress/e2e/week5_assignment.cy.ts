@@ -9,12 +9,7 @@
 // Print the text on console/terminal
 
 describe("Test Testlio Platform", () => {
-  // beforeEach(() => {
-  //   // Visit the Testlio Website
-  //   cy.visit("https://testlio.com/");
-  // });
-
-  it("Print the title in console", () => {
+  it("Visit Testlio then go to learn more from about nav-link", () => {
     cy.visit("https://testlio.com/");
     // Print the title on console
     let title = cy
