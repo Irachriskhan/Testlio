@@ -10,6 +10,33 @@
 
 describe("Test Testlio Platform", () => {
   it("Visit Testlio then go to learn more from about nav-link", () => {
+    // visit Testlio
+    cy.visit("https://testlio.com/");
+
+    // Get and print the title to console
+    cy.title({ log: true }).should(
+      "eq",
+      "Your Trusted Software Testing Partner in Critical Moments - Testlio"
+    );
+
+    // click on About
+    cy.get("ul.nav__list>li").contains("About").click();
+
+    // Visit Learn more link
+    cy.get("ul.nav__list>li")
+      .find("a[href='https://testlio.com/about-us/']")
+      .click();
+
+    // Find and print "Fused testing" heading
+    cy.get("h1#we-power-fused-software-testing-to-enable-human-possibilities", {
+      log: true,
+    }).should("be.visible");
+  });
+});
+
+/**
+describe("Test Testlio Platform", () => {
+  it("Visit Testlio then go to learn more from about nav-link", () => {
     cy.visit("https://testlio.com/");
     // Print the title on console
     let title = cy
@@ -18,9 +45,8 @@ describe("Test Testlio Platform", () => {
         "eq",
         "Your Trusted Software Testing Partner in Critical Moments - Testlio"
       );
-    // Check the existance of the title
+    // Check the existance of the title and log it
     if (title) {
-      // log the title
       cy.log(
         "Your Trusted Software Testing Partner in Critical Moments - Testlio"
       );
@@ -48,3 +74,4 @@ describe("Test Testlio Platform", () => {
       cy.log("We power fused software testing to enable human possibilities");
   });
 });
+ */
