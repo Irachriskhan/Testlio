@@ -74,7 +74,7 @@ describe("Automation Test of Luma website", () => {
 
     // Step-5: Click on mini cart icon
 
-    cy.wait(3000); // wait for the item to be added for 3 seconds
+    cy.wait(10000); // wait for the item to be added for 3 seconds
     // Click on the cart Icon
     cy.get(
       "header.page-header div.header.content > div.minicart-wrapper"
@@ -118,42 +118,98 @@ describe("Automation Test of Luma website", () => {
     cy.get("#top-cart-btn-checkout").click();
     cy.wait(3000);
     cy.url().should("eq", "https://magento.softwaretestingboard.com/checkout/");
-
+    cy.wait(10000);
     // Step-7: Fill it all the mandatory details and navigate to payments page
     // Assert on the address visibility
 
     // Assert on the product price and summary
 
     // Enter the email address
-    cy.get("#customer-email").type("irachriskhan@gmail.com");
+    cy.get(
+      "fieldset#customer-email-fieldset.fieldset div.field.required > div.control._with-tooltip"
+    )
+      .find("input#customer-email")
+      .type("irachriskhan@gmail.com", {
+        force: true,
+      });
     // Enter the First name
-    //  #shipping-new-address-form
-    // #co-shipping-form
-    cy.get("#checkoutSteps").find("input#VNR693X").type("Christophe");
+    cy.get("form#co-shipping-form")
+      .find("input[name='firstname']")
+      .type("Christophe");
     // Enter the Last name
-    cy.get("#YK9V61X").type("Irakoze", { force: true });
+    cy.get("#checkoutSteps")
+      .find("input[name='lastname']")
+      .type("Irakoze", { force: true });
     // Enter the Company
-    cy.get("#AAMLPMR").type("Testlio");
+    cy.get("#checkoutSteps").find("input[name='company']").type("Testlio");
     // Enter the Street Adress
-    cy.get("#D0AIBH9").type("KN 25st").should("KN 25st").and("be.visible");
-    cy.get("#M1ULOLE").type("54897").should("54897").and("be.visible");
-    cy.get("#OVM8WFR").type("Bwoga").should("Bwoga").and("be.visible");
+    cy.get("#checkoutSteps")
+      .find("input[name='street[0]']")
+      .type("KN 25st")
+      // .should("KN 25st")
+      .should("be.visible");
+    cy.get("#checkoutSteps")
+      .find("input[name='street[1]']")
+      .type("54897")
+      // .should("54897")
+      .should("be.visible");
+    cy.get("#checkoutSteps")
+      .find("input[name='street[2]']")
+      .type("Bwoga")
+      // .should("Bwoga")
+      .should("be.visible");
     // Enter the City name
-    cy.get("#GQ209FV").type("Gitega");
+    cy.get("#checkoutSteps").find("input[name='city']").type("Gitega");
     // Enter the Province
-    cy.get("#BCCX116").type("Gitega");
+    cy.get("#checkoutSteps").find("select[name='region_id']").select("Alaska");
     // Enter the Zip Code
-    cy.get("#HQJYOOI").type("00000");
+    cy.get("#checkoutSteps").find("input[name='postcode']").type("00000");
     // Select the Country
-    cy.get("#AWKHJNH").select("Burundi");
+    cy.get("#checkoutSteps")
+      .find("select[name='country_id']")
+      .select("Burundi");
     // Enter the Phone number
-    cy.get("#P2PSFSY").type("250791615454");
+    cy.get("#checkoutSteps")
+      .find("input[name='telephone']")
+      .type("+250791615454");
     // Check Shiping Method
+    cy.wait(6000);
     cy.get(
       "table.table-checkout-shipping-method tbody:nth-child(2) tr.row td.col.col-method:nth-child(1) > input.radio"
     ).check();
+    // navigate to the payment page
     cy.get(
       "form.form.methods-shipping div.actions-toolbar:nth-child(3) div.primary > button.button.action.continue.primary"
-    ).click();
+    )
+      .contains("Next")
+      .click({ timeout: 10000 });
+
+    // Assert on the product summary
+    cy.wait(6000);
+    cy.get("div#opc-sidebar").should("be.visible");
+    // Assert on the product price
+    cy.get("div#opc-sidebar")
+      .find("td.amount>strong>span.price")
+      .should("be.not.empty");
+
+    // Step-8: Click on Place order
+    // Assert on the success notes of the order
+    cy.get(
+      " div.payment-method._active div.payment-method-content div.payment-method-billing-address > div.checkout-billing-address"
+    ).should("be.visible");
+    // wait the page to load
+    cy.wait(6000);
+    // Assert on the visibility of the order number
+    cy.get("button[title='Place Order']")
+      .should("be.visible")
+      .and("not.be.empty")
+      .click();
+
+    // Assert on the continue shopping button
+    cy.get(
+      "a.action.primary.continue[href='https://magento.softwaretestingboard.com/']"
+    )
+      .should("be.visible")
+      .click();
   });
 });
