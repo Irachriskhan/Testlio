@@ -35,3 +35,12 @@
 //     }
 //   }
 // }
+
+Cypress.Commands.add("typeLoginDta", (email, password) => {
+  cy.get("#username").type(email);
+  cy.get("#password").type(password);
+});
+
+Cypress.Commands.add("getElement", (element, options) => {
+  cy.get(element, options);
+});
