@@ -1,0 +1,7 @@
+{
+    "testlioUrl": "https://testlio.com/",
+    "ul_li": "ul.nav__list>li",
+    "aboutUs": "a[href='https://testlio.com/about-us/']",
+    "fused": "h1#we-power-fused-software-testing-to-enable-human-possibilities",
+    "title": "Your Trusted Software Testing Partner in Critical Moments - Testlio"
+}
