@@ -1,15 +1,11 @@
 /// <reference types="cypress" />
 
-// declare namespace Cypress {
-//   interface Chainable<Subject = any> {
-//     typeLoginDta(email: string, password: string): void;
-//   }
-// }
-
-import type week5inputs from "../fixtures/week5.json";
+import type testlioData from "../fixtures/testlioData.json";
+import type week6inputs from "../fixtures/lumaData.json";
 
 interface FixtureTypes {
-  week5inputs: typeof week5inputs;
+  testlioData: typeof testlioData;
+  lumaData: typeof lumaData;
   // add other fixtures here
 }
 
@@ -23,6 +19,7 @@ declare global {
     interface Chainable<Subject = any> {
       typeLoginDta(email: string, password: string): void;
       getElement(element: string, options?: object): Chainable<HTMLElement>;
+      getFind(firstElem: string, secondElem: string): Chainable<HTMLElement>;
     }
   }
 }
