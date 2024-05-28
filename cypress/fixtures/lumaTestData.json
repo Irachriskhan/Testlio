@@ -1,0 +1,20 @@
+{
+    "url":"https://magento.softwaretestingboard.com/",
+    "hotSeller":"Hot Sellers",
+    "gear": "Gear",
+    "fitness": "Fitness Equipment",
+    "shippingEmail": "irachriskhan@gmail.com",
+    "fields": [
+        { "locator": "input[name='firstname']", "value": "Christophe" },
+        { "locator": "input[name='lastname']", "value": "Irakoze" },
+        { "locator": "input[name='company']", "value": "Testlio" },
+        { "locator": "input[name='street[0]']", "value": "KN 25st" },
+        { "locator": "input[name='street[1]']", "value": "54897" },
+        { "locator": "input[name='street[2]']", "value": "Bwoga" },
+        { "locator": "input[name='city']", "value": "Gitega" },
+        { "locator": "select[name='region_id']", "value": "Alaska" },
+        { "locator": "input[name='postcode']", "value": "00000" },
+        { "locator": "select[name='country_id']", "value": "Burundi" },
+        { "locator": "input[name='telephone']", "value": "+250791615454" }
+      ]
+}
