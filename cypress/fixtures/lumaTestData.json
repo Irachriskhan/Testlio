@@ -2,7 +2,7 @@
     "url":"https://magento.softwaretestingboard.com/",
     "hotSeller":"Hot Sellers",
     "gear": "Gear",
-    "fitnes": "Fitness Equipment",
+    "fitness": "Fitness Equipment",
     "shippingEmail": "irachriskhan@gmail.com",
     "fields": [
         { "locator": "input[name='firstname']", "value": "Christophe" },

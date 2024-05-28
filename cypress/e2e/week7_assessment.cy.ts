@@ -50,7 +50,7 @@ describe("Test Testlio Platform", function () {
       .trigger("mouseover");
     // Go to Fitness Equipment page
     basePage
-      .verifyContent(this.locators.fitness, "Fitness Equipment") // this.values.fitness
+      .verifyContent(this.locators.fitness, this.values.fitness)
       .should("be.visible")
       .click();
     // Assert all products
@@ -101,7 +101,7 @@ describe("Test Testlio Platform", function () {
     basePage.clickElement(this.locators.checkoutBtn);
     basePage.waiting(3000);
     //   Assert redirection
-    basePage.navigateToSite(`${this.locators.url}checkout/#shipping`);
+    basePage.validateUrl(`${this.values.url}checkout/#shipping`); //
     basePage.waiting(10000);
 
     // Step-7: Fill it all the mandatory details and navigate to payments page

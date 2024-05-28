@@ -6,6 +6,10 @@ class BasePage {
     cy.url().should("eq", url); // Assert url redirection
   }
 
+  validateUrl(url: string) {
+    cy.url().should("eq", url);
+  }
+
   assertElement(elem: string, value: string, options?: object | string): any {
     return cy.get(elem).should(value, options);
   }
